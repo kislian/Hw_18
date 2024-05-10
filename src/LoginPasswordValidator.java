@@ -3,11 +3,15 @@ import exception.*;
 public class LoginPasswordValidator {
 
     public static void validateLoginPassword(String login, String password, String repeatPassword)
+
+
             throws WrongConfirmPasswordException, WrongLoginException, WrongPasswordException, WrongLengthLoginException, WrongLengthPasswordException {
-        boolean loginLength = login.length() <= 20;
-        boolean loginMatch = login.matches("[a-zA-Z0-9_]+");
-        boolean passwordLength = password.length() <= 20;
-        boolean passwordMatch = password.matches("[a-zA-Z0-9_]+");
+          final String PATTERN = "[a-zA-Z0-9_]+";
+         final int MAX_LENGTH = 20;
+        boolean loginLength = login.length() <= MAX_LENGTH;
+        boolean loginMatch = login.matches(PATTERN);
+        boolean passwordLength = password.length() <= MAX_LENGTH;
+        boolean passwordMatch = password.matches(PATTERN);
         boolean passwordConfirmed = password.equals(repeatPassword);
 
         if (!loginLength) {
